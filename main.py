@@ -22,9 +22,9 @@ def mensajes_entrantes(update, context):
     
 if __name__ == "__main__":
   
-    elbot = telegram.Bot(token=TOKEN)
+    Hentaibot = telegram.Bot(token=TOKEN)
     
-actualizador = Updater(elbot.token, use_context=True)
+actualizador = Updater(Hentaibot.token, use_context=True)
        
 despachador = actualizador.dispatcher
 
