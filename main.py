@@ -57,4 +57,10 @@ def mensajes_entrantes(update, context):
      
 if __name__ == "__main__":
   
-    elbot = telegram.Bot(token=TOKEN)     
+    elbot = telegram.Bot(token=TOKEN)
+    
+actualizador = Updater(elbot.token, use_context=True)
+       
+  
+despachador = actualizador.dispatcher    
+    
