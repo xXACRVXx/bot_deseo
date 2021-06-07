@@ -53,7 +53,7 @@ def mensajes_entrantes(update, context):
      
      
      if str(Texto).__contains__('#deseo'):
-      context.bot.send_message(chat_id='@grupo_para_probar_bots',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' + str(Usuario).replace('None','Anónimo') + ': ' + str(Texto).replace('-say','--') +  '\n\n')
+      context.bot.send_message(chat_id='@grupo_para_probar_bots',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' + str(Usuario).replace('None','Anónimo') + ': ' + str(Texto) +  '\n\n')
      
      
      
