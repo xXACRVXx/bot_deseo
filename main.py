@@ -53,7 +53,7 @@ def mensajes_entrantes(update, context):
      
      
      if str(Texto).__contains__('-say'):
-      context.bot.send_message(chat_id='@Xx_A_xX_soporte',text=str(Texto).replace('-say', ''))
+      context.bot.send_message(chat_id='@grupo_para_probar_bots',text=str(Texto).replace('-say', ''))
      
      
      
