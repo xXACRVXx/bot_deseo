@@ -41,6 +41,9 @@ print('\n\n\n')
 print('PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
+def start(update, context):
+      update.message.reply_text('Hola, humano\n\nSoy Xx_A_xX ver: 0.08.12(beta)')
+
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
@@ -49,7 +52,8 @@ def mensajes_entrantes(update, context):
      
      
      
-     
+     if str(Texto).__contains__('-say'):
+      context.bot.send_message(chat_id='@Xx_A_xX_soporte',text=str(Texto).replace('-say', ''))
      
      
      
