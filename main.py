@@ -42,3 +42,7 @@ print('PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 
+def mensajes_entrantes(update, context):
+     Texto= update.message.text
+     Grupo= update.message.chat.title
+     Usuario= update.effective_user['first_name']
