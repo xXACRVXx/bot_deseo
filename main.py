@@ -42,7 +42,7 @@ print('PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
-      update.message.reply_text('Hola, humano\n\nSoy Xx_A_xX ver: 0.08.12(beta)')
+      update.message.reply_text("""PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)""")
 
 
 def mensajes_entrantes(update, context):
@@ -67,6 +67,10 @@ actualizador = Updater(elbot.token, use_context=True)
        
   
 despachador = actualizador.dispatcher
+
+
+despachador.add_handler(CommandHandler('start', start))
+
 
 despachador.add_handler(MessageHandler(filters=Filters.text, callback= mensajes_entrantes))
    
