@@ -1,5 +1,6 @@
 import os
 import sys
+import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 TOKEN = os.getenv("TOKEN")
