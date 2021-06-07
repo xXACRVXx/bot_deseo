@@ -38,11 +38,11 @@ print('                ,,,,,,,,,,,,,,,,,,')
 
 
 print('\n\n\n')
-print('PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)')
+print('PROYECTO DESEOS VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
-      update.message.reply_text("""PROYECTO SHIROMI VERSION: 0.0.1 (ALPHA)""")
+      update.message.reply_text("""BOT DE DESEOS VERSION: 0.0.1 (ALPHA)""")
 
 
 def mensajes_entrantes(update, context):
@@ -52,8 +52,8 @@ def mensajes_entrantes(update, context):
      
      
      
-     if str(Texto).__contains__('-say'):
-      context.bot.send_message(chat_id='@grupo_para_probar_bots',text=str(Texto).replace('-say', ''))
+     if str(Texto).__contains__('#deseo'):
+      context.bot.send_message(chat_id='@grupo_para_probar_bots',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' + str(Usuario).replace('None','Anónimo') + ': ' + str(Texto).replace('-say','--') +  '\n\n')
      
      
      
