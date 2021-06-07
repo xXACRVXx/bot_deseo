@@ -46,3 +46,7 @@ def mensajes_entrantes(update, context):
      Texto= update.message.text
      Grupo= update.message.chat.title
      Usuario= update.effective_user['first_name']
+     
+if __name__ == "__main__":
+  
+    elbot = telegram.Bot(token=TOKEN)     
