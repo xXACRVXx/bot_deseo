@@ -62,7 +62,9 @@ if __name__ == "__main__":
 actualizador = Updater(elbot.token, use_context=True)
        
   
-despachador = actualizador.dispatcher    
+despachador = actualizador.dispatcher
+
+despachador.add_handler(MessageHandler(filters=Filters.text, callback= mensajes_entrantes))
    
    
 print('\nIniciando\n')
