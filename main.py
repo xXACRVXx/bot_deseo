@@ -63,4 +63,11 @@ actualizador = Updater(elbot.token, use_context=True)
        
   
 despachador = actualizador.dispatcher    
-    
+   
+   
+print('\nIniciando\n')
+  
+actualizador.start_polling()
+  
+actualizador.idle   
+   
