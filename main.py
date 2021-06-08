@@ -18,7 +18,7 @@ def mensajes_entrantes(update, context):
      Usuario= update.effective_user['first_name']
      
      if str(Texto).__contains__('#deseo'):
-      context.bot.send_message(chat_id='@deseos_solo_hentai_desu',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + '\n\n ' + str(Texto) +  '\n\n')
+      context.bot.send_message(chat_id='1407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + '\n\n ' + str(Texto) +  '\n\n')
     
 if __name__ == "__main__":
   
