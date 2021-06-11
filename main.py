@@ -10,12 +10,12 @@ print('PROYECTO DESEOS VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
-     # update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.23 (ALPHA)
-      #dev: @xXACRVXx""")
-      update.message.reply_text( """Historial de cambios ver: 0.1.23\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\ncorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n corrección de errores en el log\n añadida la base para futura versión con una lista de los últimos deseos enviados al bot\ncorrecion/actualizacion de la versión en el /start""" )
+      update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.23 (ALPHA)
+      By @xXACRVXx""")
+     
 
 def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 0.1.23(beta)\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\ncorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n corrección de errores en el log\n añadida la base para futura versión con una lista de los últimos deseos enviados al bot\ncorrecion/actualizacion de la versión en el /start""" )
+      update.message.reply_text( """Historial de cambios ver: 0.1.23(beta)\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\nCorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n Corrección de errores en el log\nAñadida la base para futura versión con una lista de los últimos deseos enviados al bot\nCorreción/actualizacion de la versión en el /start""" )
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
