@@ -21,9 +21,10 @@ def mensajes_entrantes(update, context):
      Texto= update.message.text
      Grupo= update.message.chat.title
      Usuario= update.effective_user['first_name']
+     Usuario_mencion= update.message.effective_user['username']
      
      if str(Texto).startswith('#deseo'):
-      context.bot.send_message(chat_id='-1001407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + '\n\n ' + str(Texto) +  '\n\n')
+      context.bot.send_message(chat_id='-1001407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + ' ' + str(Usuario_mencion) + '\n\n ' + str(Texto) +  '\n\n')
       
 
     
