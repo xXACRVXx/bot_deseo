@@ -11,7 +11,7 @@ print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
       update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.23 (ALPHA)
-      by @xXACRVXx""")
+      De @xXACRVXx""")
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
