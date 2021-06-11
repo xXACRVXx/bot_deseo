@@ -34,10 +34,11 @@ actualizador = Updater(Hentaibot.token, use_context=True)
 despachador = actualizador.dispatcher
 
 despachador.add_handler(CommandHandler('start', start))
+despachador.add_handler(CommandHandler('updates', updates))
 
 despachador.add_handler(MessageHandler(filters=Filters.text, callback= mensajes_entrantes))
 
-despachador.add_handler(CommandHandler('updates', updates))
+
    
 print('\nIniciando\n')
   
