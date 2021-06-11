@@ -13,16 +13,16 @@ def start(update, context):
      
 
 def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 0.1.24(beta)\nSe agrego el @ del usuario\n\nCorrección de errores y mejoras de seguridad, como el  toDus :v\n\nver old: 0.1.23 F por ella,duro 40minutos\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\n\nCorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n\nCorrección de errores en el log\n\nAñadida la base para futura versión con una lista de los últimos deseos enviados al bot\n\nCorreción/actualizacion de la versión en el /start""" )
+      update.message.reply_text( """Historial de cambios ver: 0.1.24(beta)\n\nCorrección de errores y mejoras de seguridad, como el  toDus :v\n\nversion old: 0.1.23(beta) F por ella, duro 40 minutos\n\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\n\nCorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n\nCorrección de errores en el log\n\nAñadida la base para futura versión con una lista de los últimos deseos enviados al bot\n\nCorreción/actualizacion de la versión en el /start""" )
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
      Grupo= update.message.chat.title
      Usuario= update.effective_user['first_name']
-     Usuario_mencion= update.message.effective_user['username']
+     #Usuario_mencion= update.message.effective_user['username']
      
      if str(Texto).startswith('#deseo'):
-      context.bot.send_message(chat_id='-1001407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + ' @' + str(Usuario_mencion) + '\n\n ' + str(Texto) +  '\n\n')
+      context.bot.send_message(chat_id='-1001407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo') + '\n\n ' + str(Texto) +  '\n\n')
       
 
     
