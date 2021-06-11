@@ -5,17 +5,15 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 TOKEN = os.getenv("TOKEN")
 
-print('\n\n\n')
-print('PROYECTO DESEOS VERSION: 0.0.1 (ALPHA)')
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
-      update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.23 (beta)
+      update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.24 (beta)
       By @xXACRVXx""")
      
 
 def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 0.1.23(beta)\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\nCorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n Corrección de errores en el log\nAñadida la base para futura versión con una lista de los últimos deseos enviados al bot\nCorreción/actualizacion de la versión en el /start""" )
+      update.message.reply_text( """Historial de cambios ver: 0.1.24(beta)\nOptimizacion de de lineas de código, paso de 87 a 45 lineas\n\nCorrección de detección del #deseo (ahora solo funcionan si es la primera palabra)\n\nCorrección de errores en el log\n\nAñadida la base para futura versión con una lista de los últimos deseos enviados al bot\n\nCorreción/actualizacion de la versión en el /start""" )
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
