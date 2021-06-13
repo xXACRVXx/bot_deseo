@@ -24,7 +24,7 @@ def mensajes_entrantes(update, context):
      if str(Texto).startswith('#deseo'):
       context.bot.send_message(chat_id='-1001407312660',text='Grupo:' + str(Grupo).replace('None', 'privado' ) + '\n' +'Usuario: ' + str(Usuario).replace('None','Anónimo')+' @'+str(Usuario2) + '\n\n ' + str(Texto) +  '\n\n')
       
-      update.message.reply_text("Tu mensaje fue enviado")
+      update.message.reply_text("Tu deseo fue enviado")
       
 
     
