@@ -13,7 +13,7 @@ def start(update, context):
      
 
 def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 0.1.27(beta)\n\nSe agrego el @ del usuario en el deseo para ayudar a encontrarlo en el grupo (en caso de el usuario no contara con @ se dará el id aunque aún mo lo e probado)\n\n-ver: 0.1.26(beta)\n\nCorrección de errores y mejoras de seguridad, como el  toDus :v\n\n-ver: 0.1.25(Alpha)\n\nEsta versión fue cancelada en estado de Alpha por problemas con el reenvío.\nF por ella""" )
+      update.message.reply_text( """Historial de cambios ver: 0.1.27(beta)\n\nSe agrego el @ del usuario en el deseo para ayudar a encontrarlo en el grupo, se agrego un mensaje a modo de feedback para asegurar que tu deseo se envió correctamente\n\n-ver: 0.1.26(beta)\n\nCorrección de errores y mejoras de seguridad, como el  toDus :v\n\n-ver: 0.1.25(Alpha)\n\nEsta versión fue cancelada en estado de Alpha por problemas con el reenvío.\nF por ella""" )
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
