@@ -22,7 +22,7 @@ def mensajes_entrantes(update, context):
      Usuario2= update.effective_user['username']
      
      if str(Texto).startswith('#deseo'):
-      context.bot.send_message(chat_id='-1001407312660',text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
+      context.bot.send_message(chat_id='-1001407312660',text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
       
       update.message.reply_text("Tu deseo fue enviado")
       
