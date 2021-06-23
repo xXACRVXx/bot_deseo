@@ -21,6 +21,13 @@ def mensajes_entrantes(update, context):
      Usuario= update.effective_user['first_name']
      Usuario2= update.effective_user['username']
      
+     Id_grupo = update.message.chat.id
+     
+     Id_mensage_re = update.message.reply_to_message.message_id
+     
+     if str(Texto).startswith('#hentai2'):
+      context.bot.forward_message(chat_id='@deseos_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage_re )
+     
      if str(Texto).startswith('#deseo'):
       context.bot.send_message(chat_id='-1001407312660',text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
       
