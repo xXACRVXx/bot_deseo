@@ -23,9 +23,12 @@ def mensajes_entrantes(update, context):
      
      Id_grupo = update.message.chat.id
      
-     Id_mensage_re = update.message.reply_to_message.message_id
+     
      
      if str(Texto).startswith('#hentai2'):
+      
+      Id_mensage_re = update.message.reply_to_message.message_id
+      
       context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage_re )
       update.message.reply_text("Tu mensaje fue enviado")
      
