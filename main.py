@@ -8,12 +8,12 @@ TOKEN = os.getenv("TOKEN")
 print('DE @xXACRVXx (Abrahán) en python 3.8')
 
 def start(update, context):
-      update.message.reply_text("""Bot de deseos de @hentai_s3 VERSION: 0.1.27 (beta)
+      update.message.reply_text("""Bot hentai_s3 VERSION: 1.0.0
       By @xXACRVXx""")
      
 
 def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 0.1.27(beta)\n\nSe agrego el @ del usuario en el deseo para ayudar a encontrarlo en el grupo, se agrego un mensaje a modo de feedback para asegurar que tu deseo se envió correctamente\n\n-ver: 0.1.26(beta)\n\nCorrección de errores y mejoras de seguridad, como el  toDus :v\n\n-ver: 0.1.25(Alpha)\n\nEsta versión fue cancelada en estado de Alpha por problemas con el reenvío.\nF por ella""" )
+      update.message.reply_text( """Historial de cambios ver: 1.0.0\n\nInformacion clasificada hasta que me entren ganas de escribir """ )
 
 def mensajes_entrantes(update, context):
      Texto= update.message.text
@@ -23,14 +23,19 @@ def mensajes_entrantes(update, context):
      
      Id_grupo = update.message.chat.id
      
+     Subtitulos = update.message.caption
      
-     
-     if str(Texto).startswith('#hentai2'):
-      
-      Id_mensage_re = update.message.reply_to_message.message_id
-      
-      context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage_re )
-      update.message.reply_text("Tu mensaje fue enviado")
+     if not str(Usuario) == 'Telegram':
+       
+       if str(Subtitulos).startswith('#hentai2'):
+        Id_mensage = update.message.message_id
+        context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage )
+       
+       if str(Texto).startswith('#hentai2'):
+        Id_mensage_re = update.message.reply_to_message.message_id
+        
+        context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage_re )
+        update.message.reply_text("Tu mensaje fue enviado")
      
      if str(Texto).startswith('#deseo'):
       context.bot.send_message(chat_id='-1001407312660',text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
@@ -50,7 +55,7 @@ despachador = actualizador.dispatcher
 despachador.add_handler(CommandHandler('start', start))
 despachador.add_handler(CommandHandler('updates', updates))
 
-despachador.add_handler(MessageHandler(filters=Filters.text, callback= mensajes_entrantes))
+despachador.add_handler(MessageHandler(filters=Filters.all, callback= mensajes_entrantes))
 
 
    
