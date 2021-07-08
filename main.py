@@ -31,7 +31,7 @@ def mensajes_entrantes(update, context):
         Id_mensage = update.message.message_id
         context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage )
        
-       if str(Texto).startswith('#hentai '):
+       if str(Texto).startswith('#hentai'):
         Id_mensage_re = update.message.reply_to_message.message_id
         
         context.bot.forward_message(chat_id='@solo_hentai_s3',from_chat_id = Id_grupo , message_id= Id_mensage_re )
