@@ -28,7 +28,8 @@ Canal_hastag1= '@solo_hentai_s3'
 # aqui se pone el grupo o canal al que desea reenviar los mensajes que contengan #deseo
 Canal_hastag2 ='-1001407312660'
 
-
+# el grupo de donde estan los usuarios que interactúan con el bot
+GrupoPrincipal = '@hentai_s3'
 
 
 # grupo donde se encuentran los administradores de el bot
@@ -37,6 +38,7 @@ Admins_Grupo = '-1001255367733'
 
 # aquí terminan los parámetros editables de el bot
 ##############################################################################
+
 
 
 
@@ -54,6 +56,20 @@ print('By Python 3.8')
 def admins(Contextbot, Usuario_id ):
   
   ChatId = Admins_Grupo
+  
+  GrupoAdmins = Contextbot.get_chat_administrators(ChatId)
+  
+  EsAdmin = False
+  for admin in GrupoAdmins:
+        if admin.user.id == Usuario_id:
+           EsAdmin = True
+  return EsAdmin
+
+
+# a diferencia de admins(), alladmins() incluye a todos los administradores y no solo a los del grupo de administradores 
+def alladmins(Contextbot, Usuario_id):
+  
+  ChatId = GrupoPrincipal
   
   GrupoAdmins = Contextbot.get_chat_administrators(ChatId)
   
@@ -110,8 +126,97 @@ def stop(update, context):
       return modo
 
 # el comando /updates muestra el Historial de cambios de las actualizaciones del bot
-def updates(update, context):
-      update.message.reply_text( """Historial de cambios ver: 1.5.7\n\ninformacion clasificada hasta que me entren ganas de escribir """ )
+def comandos(update, context):
+      update.message.reply_text( f"""ESTOS SON LOS COMANDOS DEL BOT:\n\n\nCOMANDOS SOLO PARA ADMINS VETERANOS:\n\n/start (activa el reenvío de mensajes y archivos al canal)\n\n/stop (desactiva el reenvío de mensajes y archivos al canal)\n\n\nCOMANDOS PARA TODOS LOS ADMINS DEL GRUPO:\n\n/ignorar (este comando añade al usuario a la lista de ignorados para que no pueda reenviar archivos al canal)\n\nPara utilizarlo se puede responder a un usuario con\n/ignorar o puede pegar el id de usuario despues del comando (/ignorar 1715705674)\n\n/noignorar (quita al usuario de la lista de usuarios ignorados)\nse utiliza igual que el de arriba\n\n\nHASHTAGS DEL BOT \n\n{Hastag1} (sirve para reenviar archivos al canal) Se utiliza principalmente para enviar fotos o memes hentai al canal\n\n{Hastag2} (sirve para enviar una sugerencia de contenido a los admins [intenta incluir el link de lo que deseas] )  """ )
+
+def ignorar(update, context):
+   print('yes')
+  
+   Usuario2 =update.effective_user['username']
+   
+   print(Usuario2)
+
+   Usuario_id = update.effective_user['id']
+   
+   Contextbot = context.bot
+   
+   Args = context.args
+   
+   Reemplazar = str(Args).replace("['", "")
+        
+   El_baneado = Reemplazar.replace("']", "")
+
+   if alladmins(Contextbot, Usuario_id) == True :  
+      
+      if Args:
+        pass
+      else:
+        try:
+          El_baneado = update.message.reply_to_message.from_user.id
+        except:
+          update.message.reply_text(f"@{Usuario2}-Sama escriba:\n/ign seguido del id del usuario o responda con /ing a un mensaje de la víctima ")
+      if not ignore.__contains__(El_baneado):
+          
+       if not El_baneado == "[]":
+         ignore.append(El_baneado)
+         
+         update.message.reply_text(f"@{Usuario2}-Sama El usuario {El_baneado} será ignorado ")
+      else:
+        update.message.reply_text(f"@{Usuario2}-Sama El usuario {El_baneado} ya estaba en la lista de usuarios ingorados")
+   else:
+     update.message.reply_text("Lo siento pero no eres admin de este grupo")
+     
+   print(ignore)
+   return ignore
+  
+
+
+def noignorar(update, context):
+   print('no')
+  
+   Usuario2 =update.effective_user['username']
+  
+   print(Usuario2)
+  
+   Usuario_id = update.effective_user['id']
+   
+   Contextbot = context.bot
+   
+   Args = context.args
+   
+   Reemplazar = str(Args).replace("['", "")
+        
+   El_baneado = Reemplazar.replace("']", "")
+   
+
+   if admins(Contextbot, Usuario_id) == True :  
+      
+      
+      if Args:
+        pass
+      else:
+        try:
+          El_baneado = update.message.reply_to_message.from_user.id
+        except:
+          update.message.reply_text(f"Lista de ignorados {ignore} ")
+           
+      if ignore.__contains__(El_baneado):
+         ignore.remove(El_baneado)
+         
+         update.message.reply_text(f"@{Usuario2}-Sama El usuario {El_baneado} dejará de ser ignorado ")    
+      else:
+         if not El_baneado == "[]":
+           update.message.reply_text(f"@{Usuario2}-Sama El usuario {El_baneado} no está en la lista de usuarios ingorados")
+         
+   
+   else:
+     update.message.reply_text("Lo siento pero no eres admin de este grupo")
+     
+     
+   return ignore
+   print(ignore)
+  
+
 
 # en def mensajes_entrantes(update, context): es donde se maneja la mayoría de mensajes que entran y salen hacia Telegram convirtiendolo en una de las partes fundamentales del bot
 def mensajes_entrantes(update, context):
@@ -153,7 +258,7 @@ def mensajes_entrantes(update, context):
      
      # aqui es donde se permite o no el reenvío de archivos si la lista modo=[] no contiene '1'
      if not modo.__contains__('1') :
-       
+       if not ignore.__contains__(Usuario_id):
          # si el usuario que utiliza el #hentai no es Telegram se reenviar los archivos o el mensaje esto se utiliza para evitar que el bot caiga en bucle
          if not str(Usuario) == 'Telegram':
            
@@ -166,7 +271,9 @@ def mensajes_entrantes(update, context):
             
             context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage_re )
             update.message.reply_text("Tu mensaje fue enviado")
-     
+              
+       else:
+           update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
      # en caso de estar desactivado el reenvío de el bot y se envie un mensaje que contenga #hentai se enviara un mensaje como feedback al usuario para que sepa la razon por la cual no funcionó
      else:
        
@@ -205,7 +312,11 @@ despachador.add_handler(CommandHandler('start', start))
 
 despachador.add_handler(CommandHandler('stop', stop))
 
-despachador.add_handler(CommandHandler('updates', updates))
+despachador.add_handler(CommandHandler('ignorar',ignorar))
+
+despachador.add_handler(CommandHandler('noignorar',noignorar))
+
+despachador.add_handler(CommandHandler('comandos', comandos))
 
 despachador.add_handler(MessageHandler(filters=Filters.all, callback= mensajes_entrantes))
 
