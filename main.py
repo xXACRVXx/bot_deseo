@@ -258,22 +258,37 @@ def mensajes_entrantes(update, context):
      
      # aqui es donde se permite o no el reenvío de archivos si la lista modo=[] no contiene '1'
      if not modo.__contains__('1') :
-       if not ignore.__contains__(Usuario_id):
+       
+       #if not ignore.__contains__(Usuario_id):
+         
+         
          # si el usuario que utiliza el #hentai no es Telegram se reenviar los archivos o el mensaje esto se utiliza para evitar que el bot caiga en bucle
          if not str(Usuario) == 'Telegram':
            
            if str(Subtitulos).__contains__(Hastag1):
-            Id_mensage = update.message.message_id
-            context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage )
+             
+             if not ignore.__contains__(Usuario_id):
+                Id_mensage = update.message.message_id
+                context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage )
+             
+             else:
+                update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
            
            if str(Texto).startswith(Hastag1):
-            Id_mensage_re = update.message.reply_to_message.message_id
-            
-            context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage_re )
-            update.message.reply_text("Tu mensaje fue enviado")
               
-       else:
-           update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
+             if not ignore.__contains__(Usuario_id):
+                Id_mensage_re = update.message.reply_to_message.message_id
+                
+                context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage_re )
+                update.message.reply_text("Tu mensaje fue enviado")
+             
+             else:
+               update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
+              
+       #else:
+           #update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
+     
+     
      # en caso de estar desactivado el reenvío de el bot y se envie un mensaje que contenga #hentai se enviara un mensaje como feedback al usuario para que sepa la razon por la cual no funcionó
      else:
        
