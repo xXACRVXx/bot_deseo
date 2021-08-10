@@ -26,7 +26,7 @@ Canal_hastag1= '@solo_hentai_s3'
 
 
 # aqui se pone el grupo o canal al que desea reenviar los mensajes que contengan #deseo
-Canal_hastag2 ='-1001407312660'
+Canal_hastag2 ='deseos_solo_hentai_desu'
 
 # el grupo de donde estan los usuarios que interactúan con el bot
 GrupoPrincipal = '@hentai_s3'
