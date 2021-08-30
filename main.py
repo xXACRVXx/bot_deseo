@@ -305,7 +305,7 @@ def mensajes_entrantes(update, context):
       
      # si se envia el texto #deseo un grupo donde se encuentre el bot este reenviará el mensaje a el grupo establecido en chat_id='' y devolvera un mensaje de feedback  
      if str(Texto).startswith(Hastag2):
-      context.bot.send_message(chat_id=Canal_hastag2,text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
+      context.bot.send_message(chat_id=Canal_hastag2,text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
       
       update.message.reply_text("Tu deseo fue enviado")
       
