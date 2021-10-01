@@ -43,7 +43,7 @@ Admins_Grupo = '-1001255367733'
 
 
 # modo = [] controla el reenvío de arcivos del bot se guarda str("1") si el bot es desactivado por los admiradores o se deja vacía para que funcione
-modo = []
+modo = ['1']
 
 # lista de usuarios ignorados por el bot
 ignore = []
@@ -95,17 +95,17 @@ def start(update, context):
 
    if admins(Contextbot, Usuario_id) == True :  
       
-      update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
+      #update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
       
-      if modo.__contains__('1'):
-         modo.remove('1')
-         return modo
-         print(modo)
+      #if modo.__contains__('1'):
+         #modo.remove('1')
+         #return modo
+         #print(modo)
       
          
    else:   
-     
-      update.message.reply_text("""Bot hentai_s3 funcionando""")
+      update.message.reply_text("""Bot desactivando temporalmente""")
+      #update.message.reply_text("""Bot hentai_s3 funcionando""")
 
 # el comando /stop cumplela funcion contraria al /start desactivando el reenvio de archivos
 def stop(update, context):
