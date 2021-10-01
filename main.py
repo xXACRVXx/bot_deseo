@@ -254,7 +254,12 @@ def mensajes_entrantes(update, context):
        if str(Texto).startswith('-modo'):
          
           update.message.reply_text(str(modo))
-        
+       
+       if str(Texto).startswith('-say'):
+         
+          Id_mensage_re = update.message.reply_to_message.message_id
+          print(Id_mensage_re)
+          update.message.reply_text(str(Texto.replace('-say','')), reply_to_message_id=Id_mensage_re )
      
      # aqui es donde se permite o no el reenvío de archivos si la lista modo=[] no contiene '1'
      if not modo.__contains__('1') :
