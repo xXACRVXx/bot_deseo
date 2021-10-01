@@ -236,7 +236,7 @@ def mensajes_entrantes(update, context):
    
    
      # esto es opcional solo esta aquí como alternativa a /start y /stop en caso de existir muchos bots en un grupo y asi no tengan que responder todos al conando /start
-     if admins(Contextbot, Usuario_id) == True :  
+     if Usuario2 == 'xXACRVXx' :  
        if str(Texto).startswith('-off'):
           update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido desactivado ")
           modo.append('1')
