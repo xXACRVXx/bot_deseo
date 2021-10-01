@@ -94,7 +94,7 @@ def start(update, context):
    
 
    if admins(Contextbot, Usuario_id) == True :  
-      
+      update.message.reply_text("""Bot desactivando temporalmente""")
       #update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
       
       #if modo.__contains__('1'):
