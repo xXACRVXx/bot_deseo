@@ -43,10 +43,12 @@ Admins_Grupo = '-1001255367733'
 
 
 # modo = [] controla el reenvío de arcivos del bot se guarda str("1") si el bot es desactivado por los admiradores o se deja vacía para que funcione
-modo = ['1']
+modo = []
 
 # lista de usuarios ignorados por el bot
 ignore = []
+
+dev_modo = []
 
 
 
@@ -94,18 +96,18 @@ def start(update, context):
    
 
    if admins(Contextbot, Usuario_id) == True :  
-      update.message.reply_text("""Bot desactivando temporalmente""")
-      #update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
       
-      #if modo.__contains__('1'):
-         #modo.remove('1')
-         #return modo
-         #print(modo)
+      update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
+      
+      if modo.__contains__('desactivando'):
+         modo.remove('desactivando')
+         return modo
+         print(modo)
       
          
    else:   
-      update.message.reply_text("""Bot desactivando temporalmente""")
-      #update.message.reply_text("""Bot hentai_s3 funcionando""")
+     
+      update.message.reply_text("""Bot hentai_s3 funcionando""")
 
 # el comando /stop cumplela funcion contraria al /start desactivando el reenvio de archivos
 def stop(update, context):
@@ -121,7 +123,7 @@ def stop(update, context):
 
    if admins(Contextbot, Usuario_id) == True :  
       update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido desactivado ")
-      modo.append('1')
+      modo.append('desactivado')
       print(modo)
       return modo
 
@@ -239,21 +241,21 @@ def mensajes_entrantes(update, context):
      if Usuario2 == 'xXACRVXx' :  
        if str(Texto).startswith('-off'):
           update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido desactivado ")
-          modo.append('1')
+          dev_modo.append('off')
           print(modo)
           return modo
           
           update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
       
        if str(Texto).startswith('-on'):
-         if modo.__contains__('1'):
-          modo.remove('1')
+         if modo.__contains__('off'):
+          dev_modo.remove('off')
           return modo
           print(modo)
        
        if str(Texto).startswith('-modo'):
          
-          update.message.reply_text(str(modo))
+          update.message.reply_text(str(modo) + '\n' + str(dev_modo) )
        
        if str(Texto).startswith('-say'):
          
@@ -262,57 +264,61 @@ def mensajes_entrantes(update, context):
           update.message.reply_text(str(Texto.replace('-say','')), reply_to_message_id=Id_mensage_re )
      
      # aqui es donde se permite o no el reenvío de archivos si la lista modo=[] no contiene '1'
-     if not modo.__contains__('1') :
-       
-       #if not ignore.__contains__(Usuario_id):
-         
-         
-         # si el usuario que utiliza el #hentai no es Telegram se reenviar los archivos o el mensaje esto se utiliza para evitar que el bot caiga en bucle
-         if not str(Usuario) == 'Telegram':
+     if not dev_modo.__contains__('off') :
+     
+         if not modo.__contains__('desactivado') :
            
-           if str(Subtitulos).__contains__(Hastag1):
+           if not ignore.__contains__(Usuario_id):
              
-             if not ignore.__contains__(Usuario_id):
-                Id_mensage = update.message.message_id
-                context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage )
              
-             else:
-                update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
-           
-           if str(Texto).startswith(Hastag1):
-              
-             if not ignore.__contains__(Usuario_id):
-                Id_mensage_re = update.message.reply_to_message.message_id
-                
-                context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage_re )
-                update.message.reply_text("Tu mensaje fue enviado")
-             
-             else:
+             # si el usuario que utiliza el #hentai no es Telegram se reenviar los archivos o el mensaje esto se utiliza para evitar que el bot caiga en bucle
+             if not str(Usuario) == 'Telegram':
+               
+               if str(Subtitulos).__contains__(Hastag1):
+                 
+                 if not ignore.__contains__(Usuario_id):
+                    Id_mensage = update.message.message_id
+                    context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage )
+                 
+                 else:
+                    update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
+               
+               if str(Texto).startswith(Hastag1):
+                  
+                 if not ignore.__contains__(Usuario_id):
+                    Id_mensage_re = update.message.reply_to_message.message_id
+                    
+                    context.bot.forward_message(chat_id=Canal_hastag1 ,from_chat_id = Id_grupo , message_id= Id_mensage_re )
+                    update.message.reply_text("Tu mensaje fue enviado")
+                 
+                 else:
+                   update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
+                  
+           else:
                update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
-              
-       #else:
-           #update.message.reply_text("No puedes usar el bot porque te encuentras en la lista de usuarios ignorados")
-     
-     
-     # en caso de estar desactivado el reenvío de el bot y se envie un mensaje que contenga #hentai se enviara un mensaje como feedback al usuario para que sepa la razon por la cual no funcionó
-     else:
-       
-        if not str(Usuario) == 'Telegram':
+         
+         
+         # en caso de estar desactivado el reenvío de el bot y se envie un mensaje que contenga #hentai se enviara un mensaje como feedback al usuario para que sepa la razon por la cual no funcionó
+         else:
            
-           if str(Subtitulos).__contains__(Hastag1):
-             
-            update.message.reply_text("El reenvío fue desactivado")
-     
-           if str(Texto).startswith(Hastag1):
-     
-            update.message.reply_text("El reenvío fue desactivado")
+            if not str(Usuario) == 'Telegram':
+               
+               if str(Subtitulos).__contains__(Hastag1):
+                 
+                update.message.reply_text("El reenvío fue desactivado")
+         
+               if str(Texto).startswith(Hastag1):
+         
+                update.message.reply_text("El reenvío fue desactivado")
      
       
      # si se envia el texto #deseo un grupo donde se encuentre el bot este reenviará el mensaje a el grupo establecido en chat_id='' y devolvera un mensaje de feedback  
+     
+     #if not dev_modo.__contains__('off') :
      if str(Texto).startswith(Hastag2):
-      #context.bot.send_message(chat_id=Canal_hastag2,text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
-      
-      update.message.reply_text("#Deseo Desactivado temporalmente")
+          context.bot.send_message(chat_id=Canal_hastag2,text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
+          
+          update.message.reply_text("Tu deseo fue enviado")
       
 
 # aqui comienza la ejecución del bot   
@@ -347,3 +353,4 @@ print('\nIniciando\n')
 actualizador.start_polling()
   
 actualizador.idle   
+   
