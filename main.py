@@ -100,8 +100,8 @@ def start(update, context):
       
       update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido activado ")
       
-      if modo.__contains__('desactivando'):
-         modo.remove('desactivando')
+      if modo.__contains__('desactivado'):
+         modo.remove('desactivado')
          return modo
          print(modo)
       
