@@ -238,7 +238,7 @@ def mensajes_entrantes(update, context):
    
    
      # esto es opcional solo esta aquí como alternativa a /start y /stop en caso de existir muchos bots en un grupo y asi no tengan que responder todos al conando /start
-     if Usuario2 == 'xXACRVXx' :  
+     if Usuario2 == 'xXACRVXx' or Usuario2 == 'RathHunt' :  
        if str(Texto).startswith('-off'):
           update.message.reply_text(f"@{Usuario2}-Sama El reenvío de multimedia a sido desactivado ")
           dev_modo.append('off')
@@ -265,7 +265,6 @@ def mensajes_entrantes(update, context):
      
      # aqui es donde se permite o no el reenvío de archivos si la lista modo=[] no contiene '1'
      if not dev_modo.__contains__('off') :
-     
          if not modo.__contains__('desactivado') :
            
            if not ignore.__contains__(Usuario_id):
@@ -310,16 +309,41 @@ def mensajes_entrantes(update, context):
                if str(Texto).startswith(Hastag1):
          
                 update.message.reply_text("El reenvío fue desactivado")
+     else:
+           
+            if not str(Usuario) == 'Telegram':
+               
+               if str(Subtitulos).__contains__(Hastag1):
+                 
+                update.message.reply_text(f'El {Hastag1} fue desactivado por los administradores, pero aún puedes usar el {Hastag2} :)')
+         
+               if str(Texto).startswith(Hastag1):
+         
+                update.message.reply_text(f'El {Hastag1} fue desactivado por los administradores, pero aún puedes usar el {Hastag2} :)')
      
-      
      # si se envia el texto #deseo un grupo donde se encuentre el bot este reenviará el mensaje a el grupo establecido en chat_id='' y devolvera un mensaje de feedback  
      
      #if not dev_modo.__contains__('off') :
      if str(Texto).startswith(Hastag2):
-          context.bot.send_message(chat_id=Canal_hastag2,text=f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}")
+          boton1 = InlineKeyboardButton(text= 'Boton (Mas Beta que el toDus)', callback_data= 'www')
+         
+          Eldeseo = f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}\n\n Prueba de grupo:{update.message.chat.title}"
+                     
+          context.bot.send_message(chat_id=Canal_hastag2,text=Eldeseo, reply_markup=InlineKeyboardMarkup([[boton1]]))
           
           update.message.reply_text("Tu deseo fue enviado")
       
+def pruebabotones(update, context):
+   Contextbot = context.bot
+   Usuario_id = update.effective_user['id']
+   if admins(Contextbot, Usuario_id) == True :  
+      elmensaje = update.callback_query
+      
+      el_deseo = elmensaje.message.text
+      eluser = update.effective_user['username']
+      elmensaje.answer()
+      elmensaje.edit_message_text(text= str(el_deseo) + f'\n\n{eluser} Complacerá este deseo')
+
 
 # aqui comienza la ejecución del bot   
 if __name__ == "__main__":
@@ -327,6 +351,7 @@ if __name__ == "__main__":
     # el objeto Hentaibot contiene el token de telegram obtenido de la variable TOKEN y otros datos 
     Hentaibot = telegram.Bot(token=TOKEN)
  
+    modo.append('desactivado')
  # actualizador contiene el objeto Hentaibot y extrae el token de telegram mas use_context=True necesario para el funcionamiento de el bot
 actualizador = Updater(Hentaibot.token, use_context=True)
  
@@ -346,6 +371,7 @@ despachador.add_handler(CommandHandler('comandos', comandos))
 
 despachador.add_handler(MessageHandler(filters=Filters.all, callback= mensajes_entrantes))
 
+despachador.add_handler(CallbackQueryHandler(pattern='www', callback=pruebabotones))
 
    
 print('\nIniciando\n')
@@ -353,4 +379,3 @@ print('\nIniciando\n')
 actualizador.start_polling()
   
 actualizador.idle   
-   
