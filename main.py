@@ -351,7 +351,7 @@ if __name__ == "__main__":
   
     # el objeto Hentaibot contiene el token de telegram obtenido de la variable TOKEN y otros datos 
     Hentaibot = telegram.Bot(token=TOKEN)
- 
+    modo.append('desactivado')
     
  # actualizador contiene el objeto Hentaibot y extrae el token de telegram mas use_context=True necesario para el funcionamiento de el bot
 actualizador = Updater(Hentaibot.token, use_context=True)
