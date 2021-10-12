@@ -326,9 +326,9 @@ def mensajes_entrantes(update, context):
      
      #if not dev_modo.__contains__('off') :
      if str(Texto).startswith(Hastag2):
-          boton1 = InlineKeyboardButton(text= 'Boton (Mas Beta que el toDus)', callback_data= 'www')
+          boton1 = InlineKeyboardButton(text= 'Boton (Mas Beta que el toDus)', callback_data= 'boton')
          
-          Eldeseo = f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}\n\n Prueba de grupo:{update.message.chat.title}"
+          Eldeseo = f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}"
                      
           context.bot.send_message(chat_id=Canal_hastag2,text=Eldeseo, reply_markup=InlineKeyboardMarkup([[boton1]]))
           
@@ -372,7 +372,7 @@ despachador.add_handler(CommandHandler('comandos', comandos))
 
 despachador.add_handler(MessageHandler(filters=Filters.all, callback= mensajes_entrantes))
 
-despachador.add_handler(CallbackQueryHandler(pattern='www', callback=pruebabotones))
+despachador.add_handler(CallbackQueryHandler(pattern='boton', callback=pruebabotones))
 
    
 print('\nIniciando\n')
