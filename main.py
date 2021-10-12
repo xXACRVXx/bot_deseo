@@ -326,7 +326,7 @@ def mensajes_entrantes(update, context):
      
      #if not dev_modo.__contains__('off') :
      if str(Texto).startswith(Hastag2):
-          boton1 = InlineKeyboardButton(text= 'Boton (Mas Beta que el toDus)', callback_data= 'boton')
+          boton1 = InlineKeyboardButton(text= 'Cumplir deseo (Mas Beta que el toDus)', callback_data= 'boton')
          
           Eldeseo = f"Grupo:{str(Grupo).replace('None', 'privado' )}\nUsuario: {str(Usuario).replace('None','Anónimo')} @{str(Usuario2)}\nID: {Usuario_id}\n\nt.me/{update.message.chat.username}/{update.message.message_id}\n\n{str(Texto)}"
                      
@@ -343,7 +343,7 @@ def pruebabotones(update, context):
       el_deseo = elmensaje.message.text
       eluser = update.effective_user['username']
       elmensaje.answer()
-      elmensaje.edit_message_text(text= str(el_deseo) + f'\n\n{eluser} Complacerá este deseo')
+      elmensaje.edit_message_text(text= str(el_deseo) + f'\n\n{eluser} Cumplirá este deseo')
 
 
 # aqui comienza la ejecución del bot   
