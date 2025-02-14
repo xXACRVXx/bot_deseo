@@ -13,7 +13,7 @@ TOKEN = os.getenv("TOKEN")
 
 
 # el # para reenviar los archivos
-Hastag1 = '#hentai'
+Hastag1 = '#reenviar'
 
 
 # el # para enviar sugerencias al canal de los administradores
@@ -27,10 +27,10 @@ Canal_hastag1= '@solo_hentai_s3'
 
 
 # aqui se pone el grupo o canal al que desea reenviar los mensajes que contengan #deseo
-Canal_hastag2 ='@deseos_solo_hentai_desu'
+Canal_hastag2 ='@deseos_solo_anime_desu'
 
 # el grupo de donde estan los usuarios que interactúan con el bot
-GrupoPrincipal = '@hentai_s3'
+GrupoPrincipal = '@anime_s3'
 
 
 # grupo donde se encuentran los administradores de el bot
@@ -108,7 +108,7 @@ def start(update, context):
          
    else:   
      
-      update.message.reply_text("""Bot hentai_s3 funcionando""")
+      update.message.reply_text("""Bot funcionando""")
 
 # el comando /stop cumplela funcion contraria al /start desactivando el reenvio de archivos
 def stop(update, context):
